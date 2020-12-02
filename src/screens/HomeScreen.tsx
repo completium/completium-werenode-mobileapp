@@ -15,7 +15,6 @@ type Props = {
 const HomeScreen = ({ navigation }: Props) => {
   return (
   <Background>
-    <StatusBar></StatusBar>
     <Logo />
     <Header><Text style={{ color: theme.colors.text }}>were</Text>node</Header>
 

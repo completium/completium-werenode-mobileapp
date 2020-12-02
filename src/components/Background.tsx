@@ -2,7 +2,8 @@ import React, { memo } from "react";
 import {
   ImageBackground,
   StyleSheet,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Platform
 } from "react-native";
 import { theme } from "../core/theme";
 
@@ -16,7 +17,7 @@ const Background = ({ children }: Props) => (
     resizeMode="repeat"
     style={styles.background}
   >
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <KeyboardAvoidingView style={styles.container} behavior={Platform.OS == "ios" ? "padding" : "height"}>
       {children}
     </KeyboardAvoidingView>
   </ImageBackground>
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     maxWidth: 340,
     alignSelf: "center",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   }
 });
 

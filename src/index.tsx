@@ -1,5 +1,8 @@
+import { StatusBar } from 'react-native';
 import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { CardStyleInterpolators, createStackNavigator } from "react-navigation-stack";
+
+StatusBar.setBarStyle('light-content');
 
 import {
   HomeScreen,
@@ -21,7 +24,10 @@ const Router = createStackNavigator(
   },
   {
     initialRouteName: "AuthLoadingScreen",
-    headerMode: "none"
+    headerMode: "none",
+    defaultNavigationOptions: {
+      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+    }
   }
 );
 
