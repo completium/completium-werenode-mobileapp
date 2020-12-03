@@ -7,3 +7,9 @@ export type AuthDetails = {
   password: string;
   name?: string;
 };
+
+export enum HomeButtonImg {
+  Scan,
+  Favorite,
+  Wallet
+}

@@ -19,7 +19,7 @@ const AuthLoadingScreen = ({ navigation }: Props) => {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       // User is logged in
-      navigation.navigate("Dashboard");
+      navigation.navigate("Whome");
     } else {
       // User is not logged in
       navigation.navigate("HomeScreen");
