@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { Surface, Text } from 'react-native-paper';
+import { Surface, Text, TouchableRipple } from 'react-native-paper';
 import { StyleSheet, Image } from 'react-native';
-import { HomeButtonImg } from '../types';
+import { HomeButtonImg, Navigation } from '../types';
 import { theme } from '../core/theme';
 
 type Props = {
   btn: HomeButtonImg;
   txt: string;
+  navigation: Navigation;
+  to: string;
 };
 
-const SurfaceButton = ({ btn, txt } : Props) => {
+const SurfaceButton = ({ btn, txt, navigation, to } : Props) => {
   const img =
   (btn === HomeButtonImg.Scan)?
     require('../assets/scan.png') :
@@ -19,10 +21,12 @@ const SurfaceButton = ({ btn, txt } : Props) => {
         require('../assets/wallet.png') :
         require('../assets/logo.png');
   return (
-    <Surface accessibilityStates style={ styles.surface }>
-        <Image source={img} style={styles.image}></Image>
-        <Text accessibilityStates>{txt}</Text>
-    </Surface>
+    <TouchableRipple onPress={() => navigation.navigate(to)} accessibilityStates>
+      <Surface accessibilityStates style={ styles.surface }>
+          <Image source={img} style={styles.image}></Image>
+          <Text accessibilityStates>{txt}</Text>
+      </Surface>
+    </TouchableRipple>
   );
 }
 

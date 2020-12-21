@@ -21,12 +21,13 @@ const HomeScreen = ({ navigation }: Props) => {
     <Paragraph>
       Welcome, please login or register.
     </Paragraph>
-    <Button mode="contained" onPress={() => navigation.navigate("LoginScreen")}>
+    <Button mode="contained" onPress={() => navigation.navigate("LoginScreen")} accessibilityStates>
       Login
     </Button>
     <Button
       mode="outlined"
       onPress={() => navigation.navigate("RegisterScreen")}
+      accessibilityStates
     >
       Sign Up
     </Button>

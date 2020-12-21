@@ -26,6 +26,7 @@
       "supportsTablet": true
     },
     "description": "Werenode payment application.",
-    "githubUrl": "https://github.com/edukera/completium-werenode-mobileapp"
+    "githubUrl": "https://github.com/edukera/completium-werenode-mobileapp",
+    "userInterfaceStyle": "dark"
   }
 }

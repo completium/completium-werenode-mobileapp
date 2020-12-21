@@ -8,7 +8,11 @@ import Button from "../components/Button";
 import { Navigation, HomeButtonImg } from "../types";
 import { logoutUser } from "../api/auth-api";
 
-const Whome = () => {
+type Props = {
+  navigation: Navigation;
+};
+
+const Whome = ({ navigation }: Props) => {
   const _handleMore = () => console.log('Shown more');
   return (
     <Wbackground>
@@ -25,17 +29,17 @@ const Whome = () => {
         <Paragraph>Select a plug to start a charging session</Paragraph>
         <View style={{ height: '5%' }}></View>
         <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-          <SurfaceButton btn={HomeButtonImg.Scan} txt="Scan plug id"/>
-          <SurfaceButton btn={HomeButtonImg.Favorite} txt="Favorites"/>
+          <SurfaceButton btn={HomeButtonImg.Scan} txt="Scan plug id" navigation={navigation} to="Qrscan"/>
+          <SurfaceButton btn={HomeButtonImg.Favorite} txt="Favorites" navigation={navigation} to="Favorites"/>
         </View>
         <View style={{ height: '5%' }}></View>
         <Paragraph>Or access your crypto wallet</Paragraph>
         <View style={{ height: '5%' }}></View>
         <View style={{ flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-         <SurfaceButton btn={HomeButtonImg.Wallet} txt="Wallet"/>
+         <SurfaceButton btn={HomeButtonImg.Wallet} navigation={navigation} to="" txt="Wallet"/>
         </View>
       </View>
-      <Button mode="outlined" onPress={() => logoutUser()}>
+      <Button mode="outlined" onPress={() => logoutUser()} accessibilityStates>
         Logout
       </Button>
     </Wbackground>
