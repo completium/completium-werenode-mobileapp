@@ -8,3 +8,4 @@ export { default as Whome } from './Whome';
 export { default as Qrscan } from './Qrscan';
 export { default as Favorites } from './Favorites';
 export { default as Settings } from './Settings';
+export { default as Charging } from './Charging';

@@ -15,6 +15,7 @@ import {
   Qrscan,
   Favorites,
   Settings,
+  Charging,
 } from "./screens";
 
 const Router = createStackNavigator(
@@ -29,6 +30,7 @@ const Router = createStackNavigator(
     Qrscan,
     Favorites,
     Settings,
+    Charging,
   },
   {
     initialRouteName: "AuthLoadingScreen",

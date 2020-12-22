@@ -64,7 +64,7 @@ const Location = ({ plug } : LocProps) => {
   >
     <Marker
       coordinate={{ latitude : Number(plug.x) , longitude : Number(plug.y) }}
-      image={require('../assets/room_primary.png')}
+      /* image={require('../assets/room_primary.png')} */
     />
     </MapView>
      /*  <List.Item
@@ -305,7 +305,7 @@ const Settings = ({ navigation }: Props) => {
             height: 60
           }}
           disabled={duration === 0}
-          mode="contained" onPress={() => console.log('Pressed')} accessibilityStates>
+          mode="contained" onPress={() => navigation.navigate("Charging")} accessibilityStates>
           start session
         </Button>
         </View>
