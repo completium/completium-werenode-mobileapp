@@ -66,10 +66,10 @@ function Qrscan({ navigation } : Props) {
     if (plugdata.loaded) {
       dispatch(setPlug(plugdata.data));
       dispatch(inverseVisible());
+      navigation.replace('Whome');
       navigation.navigate("Settings");
     } else {
       dispatch(setModalType(ModalType.PlugNotFound));
-      alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     }
   };
 

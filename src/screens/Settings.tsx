@@ -14,9 +14,12 @@ import { Entypo } from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-maps';
 import { mapStyle } from '../core/utils';
-
+import { approve } from '../core/approve';
 
 //Geocoder.init("AIzaSyCjfjQOKyPtKqrSfM0oKTlUqnFYoA4stQk");
+
+import * as firebase from 'firebase'
+import 'firebase/firestore';
 
 
 
@@ -245,6 +248,41 @@ const Settings = ({ navigation }: Props) => {
   const [duration, setDuration] = React.useState(0)
   const _handleMore = () => navigation.navigate("Whome");
   const plug = useSelector(selectSessionPlug);
+  async function handleStart() {
+    firebase.auth().onAuthStateChanged(user => {
+      firebase.firestore().collection('crypto').doc(user.email).get().then(doc => {
+        const privateKey = doc.get(new firebase.firestore.FieldPath('private'));
+        const address    = doc.get(new firebase.firestore.FieldPath('publicHash'));
+        const publicKey  = doc.get(new firebase.firestore.FieldPath('publicKey'));
+        fetch('https://evesemanager.com:5010/EvseSession/startnosig', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            "evseId": "WNCooL",
+            "currency": "WRC",
+            "userPrivateKey": "edsk2tst6HHUSo4S6mutA16sDBrRL9La5NCtbSxKJMCeDZ6hJaHMGQ",
+            "parkingTime": "60",
+            "userAddress": "tz1ZXf37ZNfVupt5GVyrPJ76q8kbjFuD2z7R",
+            "userPubkey": "edpktvuBLrhcgsZ8GhHPhNYSk1mLmEAwNnzp4ZaJ3L5dnu1AdewEcY",
+            "nbTokens": "100"
+          }),
+        }).then (res => {
+          res.json().then(res => {
+            console.log(res)
+          })
+        }).catch(e => {
+          console.error(e);
+        })
+      })
+    } );
+
+    var res = await approve();
+    console.log(res);
+    navigation.navigate('Charging');
+  }
   return (
     <Wbackground>
       <Appbar.Header accessibilityStates style={{ width: '100%' }}>
@@ -305,7 +343,7 @@ const Settings = ({ navigation }: Props) => {
             height: 60
           }}
           disabled={duration === 0}
-          mode="contained" onPress={() => navigation.navigate("Charging")} accessibilityStates>
+          mode="contained" onPress={handleStart} accessibilityStates>
           start session
         </Button>
         </View>

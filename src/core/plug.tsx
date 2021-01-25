@@ -24,11 +24,11 @@ import { Plug, PlugPricing, Currency, PlugType } from '../types';
   ] */
 
 function getStorageUrl(address : string) {
-  return 'https://mainnet-tezos.giganode.io/chains/main/blocks/head/context/contracts/'+address+'/storage'
+  return 'https://testnet-tezos.giganode.io/chains/main/blocks/head/context/contracts/'+address+'/storage'
 }
 
 function getAddressBookUrl() {
-  return getStorageUrl('KT1HQmKekWoUfA1ZDFmiSB91qxaAM8uoxkX1');
+  return getStorageUrl('KT1X88DyBqCkU1P9tMJBHgYcZDFepFc1d5ub');
 }
 
 function getEvseAddress(addressBook,id) {
